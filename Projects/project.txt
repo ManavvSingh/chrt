@@ -1,0 +1,78 @@
+Project Management:
+
+=>GET /projects
+Description: Retrieve a list of all projects.
+Response: 200 OK with an array of project details in JSON format.
+Example: GET http://localhost:3000/projects
+
+=>GET /projects/:id
+Description: Retrieve information about a specific project by ID.
+Response: 200 OK with the project details in JSON format if found, or 404 Not Found if not found.
+Example: GET http://localhost:3000/projects/123
+
+=> POST /projects
+Description: Create a new project.
+Request Body: JSON object representing the project.
+Response: 201 Created with the ID of the created project in JSON format (e.g., {"id": 1}).
+Example: POST http://localhost:3000/projects
+Request Body: { "name": "New Project", "description": "Description of the project", "status": "active" }
+PUT /projects/:id
+
+Description: Update an existing project by ID.
+Request Body: JSON object representing the updated project.
+Response: 200 OK if the project was found and updated, or 404 Not Found if not found.
+Example: PUT http://localhost:3000/projects/123
+Request Body: { "description": "Updated project description", "status": "completed" }
+DELETE /projects/:id
+
+Description: Delete a project by ID.
+Response: 200 OK if the project was found and deleted, or 404 Not Found if not found.
+Example: DELETE http://localhost:3000/projects/123
+GET /projects/:id/tasks
+
+Description: Retrieve all tasks associated with a specific project.
+Response: 200 OK with an array of task details in JSON format.
+Example: GET http://localhost:3000/projects/123/tasks
+POST /projects/:id/tasks
+
+Description: Create a new task within a specific project.
+Request Body: JSON object representing the task.
+Response: 201 Created with the ID of the created task in JSON format.
+Example: POST http://localhost:3000/projects/123/tasks
+Request Body: { "title": "Task 1", "description": "Description of the task", "status": "pending" }
+PUT /projects/:id/tasks/:taskId
+
+Description: Update an existing task within a specific project by ID.
+Request Body: JSON object representing the updated task.
+Response: 200 OK if the task was found and updated, or 404 Not Found if not found.
+Example: PUT http://localhost:3000/projects/123/tasks/456
+Request Body: { "status": "completed" }
+DELETE /projects/:id/tasks/:taskId
+
+Description: Delete a task within a specific project by ID.
+Response: 200 OK if the task was found and deleted, or 404 Not Found if not found.
+Example: DELETE http://localhost:3000/projects/123/tasks/456
+GET /projects/:id/members
+
+Description: Retrieve a list of members associated with a specific project.
+Response: 200 OK with an array of member details in JSON format.
+Example: GET http://localhost:3000/projects/123/members
+POST /projects/:id/members
+
+Description: Add a new member to a specific project.
+Request Body: JSON object representing the member.
+Response: 201 Created with the ID of the created member in JSON format.
+Example: POST http://localhost:3000/projects/123/members
+Request Body: { "userId": 789, "role": "developer" }
+PUT /projects/:id/members/:memberId
+
+Description: Update the role of an existing member within a specific project by ID.
+Request Body: JSON object representing the updated member role.
+Response: 200 OK if the member was found and updated, or 404 Not Found if not found.
+Example: PUT http://localhost:3000/projects/123/members/456
+Request Body: { "role": "lead_developer" }
+DELETE /projects/:id/members/:memberId
+
+Description: Remove a member from a specific project by ID.
+Response: 200 OK if the member was found and removed, or 404 Not Found if not found.
+Example: DELETE http://localhost:3000/projects/123/members/456

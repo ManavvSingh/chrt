@@ -1,0 +1,17 @@
+easy:
+Variables
+datatypes
+strings
+global and local scope
+if,if-else
+
+medium:
+Arrays
+Functions 
+While,do while,for loops
+Objects
+
+nhk:
+this,arrow Functions
+filter,map,reduce
+Async,callback,promises
