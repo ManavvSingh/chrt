@@ -7,12 +7,36 @@
 //         2. Inversion of control 
 
 //Promises
-const myAPI = "https://fakerapi.it/api/v1/persons"
+// const myAPI = "https://fakerapi.it/api/v1/persons"
 
-const myPromise = fetch(myAPI);
+// const myPromise = fetch(myAPI);
 
-console.log(myPromise)
+// console.log(myPromise)
 
-myPromise.then(function(data){
-    console.log(data);
-})
+// myPromise.then(function(data){
+//     console.log(data); 
+// })
+
+// Creating a promise
+
+const cart = ["shoes","pants"];
+const promise = createOrder(cart);
+
+
+function createOrder(cart){
+    const pr = new Promise(function(resolve,reject){
+        const orderID = "13";
+        if(orderID!="123"){
+            const err = new Error("cart is not valid");
+            reject(err);
+        }
+        if(orderID=="123"){
+            resolve(orderID);
+        }
+    });
+    return pr;
+}
+
+promise
+    .then((id)=>{console.log(id)})
+    .catch((err)=>{console.log(err.message)})
