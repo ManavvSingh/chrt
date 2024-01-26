@@ -37,6 +37,11 @@ function createOrder(cart){
     return pr;
 }
 
+
 promise
     .then((id)=>{console.log(id)})
+    .then(function(paymentInfo){
+        console.log(paymentInfo)
+    })
     .catch((err)=>{console.log(err.message)})
+ 
