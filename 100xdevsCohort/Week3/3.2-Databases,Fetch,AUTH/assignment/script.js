@@ -22,6 +22,13 @@ const AdminSchema = new mongoose.Schema({
 })
 const ADMIN_TABLE = mongoose.model('admin',AdminSchema);
 
+
+const UserSchema = new mongoose.Schema({
+    username: String,
+    password: String
+})
+const USER_TABLE = mongoose.model('user',UserSchema);
+
 app.post('/admin/signup',async (req,res)=>{
     const mail = req.body.username;
     const pwd = req.body.password;
@@ -80,5 +87,28 @@ app.get('/admin/courses',async (req,res)=>{
     }
     res.json(adminExists.courses);
 })
+
+app.post('/user/signup',async (req,res)=>{
+    const username = req.body.username;
+    const password = req.body.password;
+    const existingUser = await USER_TABLE.findOne({username:username});
+    if(existingUser){
+        return res.json({
+            "msg":"user already exists"
+        })
+    }
+
+    const user = USER_TABLE({
+        username,
+        password
+    });
+
+    await user.save();
+    res.json({
+        "msg": "User created"
+    })
+
+})
+
 
 app.listen(3000);
