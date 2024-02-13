@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    function calcSum(){
+        // const elem = document.getElementById('final');
+        const a = document.getElementById('f').value;
+        const b = document.getElementById('s').value;
+        // elem.innerHTML = parseInt(a) + parseInt(b);
+        // console.log(elem);
+        fetch("https://sum-server.100xdevs.com/sum?a=" + a + "&b=" + b)
+        .then(function(res){
+            return res.text();
+        })
+        .then(function(res){
+            document.getElementById('final').innerHTML = res;
+        })
+    }
+</script>
+<body>
+    <input id="f" type="text" placeholder="First number"> <br> <br>
+    <input id="s" type="text" placeholder="Second number"> <br> <br>
+    <button onclick="calcSum()">Calculate sum</button>
+    <div id="final"></div>
+</body>
+</html>

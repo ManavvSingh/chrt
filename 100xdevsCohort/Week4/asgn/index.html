@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    async function calcAmt(){
+        const p = document.getElementById('p').value;
+        const r = document.getElementById('r').value;
+        const t = document.getElementById('t').value;
+        const res = await fetch("https://sum-server.100xdevs.com/interest?principal=" + p + "&rate=" + r + "&time=" + t)
+        // const ans = await res.text();
+        // console.log(ans[0])
+        const ans = await res.json();
+        document.getElementById('total').innerText = "Total: " + ans.total;
+        document.getElementById('interest').innerText = "Interest: " + ans.interest;
+
+    }
+</script>
+<body>
+    <input id= "p" type="text" placeholder="Principal Amount"><br><br>
+    <input id="r" type="text" placeholder="Rate"><br><br>
+    <input id="t" type="text" placeholder="Time"><br><br>
+    <button onclick="calcAmt()">Caculate Amount</button>
+    <p id="total"></p>
+    <p id="interest"></p> 
+</body>
+</html>
